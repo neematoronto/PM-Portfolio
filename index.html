@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neema Kashiripour — Product Leader</title>
+<!-- Version: Light Blue / Stripe-inspired palette -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Epilogue:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f7f9fc;
+    --bg-3: #eef2f8;
+    --border: #e2e8f0;
+    --border-dark: #c8d3e0;
+    --text: #0d0d0d;
+    --text-secondary: #4a5568;
+    --text-muted: #9aa5b4;
+    --accent: #236cff;
+    --accent-light: #ebf0ff;
+    --accent-dark: #0a2540;
+    --mono: 'JetBrains Mono', monospace;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Epilogue', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  nav.scrolled { border-bottom-color: var(--border); }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* LAYOUT */
+  section { padding: 8rem 0; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 4rem; }
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 3.5rem;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding-top: 6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-left {
+    padding: 0 6rem 0 4rem;
+    border-right: 1px solid var(--border);
+  }
+  .hero-right {
+    padding: 0 4rem 0 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: slideIn 0.7s ease 0.2s forwards;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(4rem, 7vw, 6.5rem);
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: slideIn 0.7s ease 0.35s forwards;
+  }
+  .hero-name em { font-style: italic; font-weight: 400; color: var(--text-secondary); }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--bg);
+    background: var(--text);
+    padding: 0.85rem 1.5rem;
+    transition: background 0.2s;
+    opacity: 0;
+    animation: slideIn 0.7s ease 0.5s forwards;
+    width: fit-content;
+  }
+  .hero-cta:hover { background: var(--accent); }
+  .hero-statement {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    opacity: 0;
+    animation: slideIn 0.7s ease 0.5s forwards;
+    border-left: 2px solid var(--border-dark);
+    padding-left: 1.5rem;
+  }
+
+  /* TIMELINE */
+  #timeline { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .timeline-table { width: 100%; border-collapse: collapse; }
+  .timeline-table tr {
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
+  }
+  .timeline-table tr.visible { opacity: 1; transform: translateY(0); }
+  .timeline-table tr:last-child { border-bottom: none; }
+  .timeline-table td { padding: 1.75rem 0; vertical-align: middle; }
+  .td-year {
+    width: 140px;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    padding-right: 3rem;
+  }
+  .td-logo { width: 48px; padding-right: 2rem; }
+  .td-logo img {
+    width: 36px; height: 36px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: #fff;
+    padding: 3px;
+    display: block;
+  }
+  .td-role { padding-right: 3rem; }
+  .tl-role {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+  .tl-company {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+  .tl-impact {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    max-width: 440px;
+    line-height: 1.7;
+  }
+
+  /* PROJECTS */
+  .project-block {
+    margin-bottom: 6rem;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.6s ease;
+  }
+  .project-block.visible { opacity: 1; transform: translateY(0); }
+  .project-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .project-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .project-index {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .project-name {
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+  .project-subtitle {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+    font-style: italic;
+  }
+  .project-co {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+  .project-kpi { text-align: right; flex-shrink: 0; }
+  .kpi-value {
+    display: block;
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .kpi-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .pgrid-cell {
+    padding: 1.75rem 2rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .pgrid-cell:nth-child(even) { border-right: none; }
+  .pgrid-cell:nth-last-child(-n+2) { border-bottom: none; }
+  .pgrid-cell--problem {
+    grid-column: 1 / -1;
+    border-right: none;
+    background: var(--bg-2);
+    padding: 2rem;
+  }
+  .pgrid-cell--problem .pgrid-text {
+    font-size: 1rem;
+    color: var(--text);
+    max-width: 680px;
+    line-height: 1.65;
+  }
+  .pgrid-label {
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .pgrid-cell--problem .pgrid-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+  }
+  .pgrid-cell--problem strong {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-top: 1.25rem;
+    margin-bottom: 0.35rem;
+  }
+  .pgrid-cell--problem strong:first-of-type { margin-top: 0; }
+  .pgrid-text {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .pgrid-list {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .pgrid-list li { padding-left: 0.25rem; }
+  .craft-bar {
+    background: var(--accent-light);
+    border: 1px solid #c5d5ff;
+    padding: 1.25rem 1.75rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .craft-bar-label { display: none; }
+  .craft-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: flex-start; }
+  .craft-tag {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    background: #fff;
+    border: 1px solid #c5d5ff;
+    padding: 0.45rem 0.85rem;
+    min-width: 160px;
+    max-width: 260px;
+  }
+  .craft-tag-type {
+    font-family: var(--mono);
+    font-size: 0.54rem;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .craft-tag-text {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+  .artifact-area {
+    border: 1px dashed var(--border-dark);
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    background: var(--bg-2);
+  }
+  .artifact-area-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .artifact-plus { font-size: 1.5rem; color: var(--border-dark); }
+
+  /* SCREENSHOT SHOWCASE */
+  .screenshot-showcase {
+    position: relative;
+    margin-top: 2rem;
+    padding: 2.5rem 2rem;
+    background: linear-gradient(135deg, #f0f4ff 0%, #f7f9fc 50%, #eef4ff 100%);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .screenshot-glow {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(35,108,255,0.08) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .screenshot-frame {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+    overflow: hidden;
+    width: 100%;
+    max-width: 680px;
+  }
+  .screenshot-bar {
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--border);
+    padding: 0.6rem 0.85rem;
+    display: flex;
+    gap: 0.35rem;
+    align-items: center;
+  }
+  .screenshot-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--border-dark);
+    display: block;
+  }
+  .screenshot-dot:first-child { background: #ff6058; }
+  .screenshot-dot:nth-child(2) { background: #ffbd2e; }
+  .screenshot-dot:nth-child(3) { background: #28ca42; }
+  .screenshot-frame img {
+    width: 100%;
+    display: block;
+    max-height: 420px;
+    object-fit: cover;
+    object-position: top;
+  }
+  .screenshot-empty .screenshot-placeholder {
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .screenshot-plus { font-size: 1.5rem; color: var(--border-dark); }
+  .screenshot-hint {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* CONTACT */
+  #contact { border-top: 1px solid var(--border); padding-bottom: 4rem; }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: end;
+    margin-bottom: 5rem;
+  }
+  .contact-title {
+    font-family: var(--serif);
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+  .contact-title em { font-style: italic; color: var(--text-secondary); }
+  .contact-body {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 360px;
+  }
+  .contact-list { display: flex; flex-direction: column; border: 1px solid var(--border); }
+  .contact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .contact-item:last-child { border-bottom: none; }
+  .contact-item:hover { background: var(--bg-2); }
+  .contact-item-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+  .contact-item-value { font-family: var(--mono); font-size: 0.65rem; color: var(--text-muted); }
+  .contact-arrow { font-size: 0.8rem; color: var(--text-muted); }
+  .footer-line {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+
+  /* ANIMATIONS */
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* EXPAND / COLLAPSE */
+  .project-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    cursor: pointer;
+    padding-bottom: 1.5rem;
+  }
+  .project-summary-left { }
+  .project-summary-right { }
+  .project-blurb {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-top: 0.75rem;
+    max-width: 520px;
+  }
+  /* Smaller title inside summary to prevent wrapping */
+  .project-summary .project-name {
+    font-size: 1.6rem;
+  }
+  .project-summary .project-meta-row {
+    display: block;
+  }
+  .project-summary .project-kpi {
+    text-align: left;
+    margin-top: 0.75rem;
+  }
+  .project-summary .kpi-value {
+    font-size: 2rem;
+  }
+  .project-expand-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    cursor: pointer;
+    margin-top: 1.25rem;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: gap 0.2s;
+  }
+  .project-expand-btn:hover { gap: 0.75rem; }
+  .project-expand-btn svg {
+    transition: transform 0.3s ease;
+  }
+  .project-expand-btn.open svg {
+    transform: rotate(90deg);
+  }
+  .project-detail {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
+  }
+  .project-detail.open {
+    max-height: 3000px;
+    opacity: 1;
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border-dark); }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <span class="nav-logo">Neema Kashiripour</span>
+  <ul class="nav-links">
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Product Manager · Fintech, B2B & Consumer SaaS</p>
+    <h1 class="hero-name">Neema<br><em>Kashiripour</em></h1>
+    <a href="#projects" class="hero-cta">
+      View selected work
+      <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M0 5h10M6.5 1l3.5 4-3.5 4" stroke="currentColor" stroke-width="1.2"/></svg>
+    </a>
+  </div>
+  <div class="hero-right">
+    <p class="hero-statement">I am an experienced PM with 8+ years building B2B and B2C products — from 0→1 launches to scaling platforms with millions of users to shipping AI driven experiences.<br><br>I'm excited about the shift we are experiencing in the PM craft towards being builders. I've been very hands on: sourcing data for my experiments directly from data lakes and building real-time dashboards, prototyping, creating PM tools to synthesize and visualize qualitative insights, to even shipping code to production on TurboTax, thankfully without any incidents.</p>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="container">
+    <p class="section-eyebrow">Career Timeline</p>
+    <table class="timeline-table">
+      <tbody>
+        <tr>
+          <td class="td-year">2023 – Present</td>
+          <td class="td-logo"><img src="https://logo.clearbit.com/intuit.com" alt="Intuit" onerror="this.style.display='none'"></td>
+          <td class="td-role">
+            <p class="tl-role">Staff Product Manager</p>
+            <p class="tl-company">Intuit · Toronto</p>
+          </td>
+          <td><p class="tl-impact">Leading strategy, roadmap and execution for TurboTax Online Canada (~3M users). Shipped the first AI-powered experience in TurboTax Canada; contributed to 10% YoY revenue growth.</p></td>
+        </tr>
+        <tr>
+          <td class="td-year">2022 – 2023</td>
+          <td class="td-logo"><img src="https://logo.clearbit.com/questrade.com" alt="Questrade" onerror="this.style.display='none'"></td>
+          <td class="td-role">
+            <p class="tl-role">Lead Product Manager</p>
+            <p class="tl-company">Questrade · Toronto</p>
+          </td>
+          <td><p class="tl-impact">Scaled acquisition by launching integrations with digital real estate brokerages and rate aggregators; cut cost per lead by double digits and reduced application drop-off by 35%.</p></td>
+        </tr>
+        <tr>
+          <td class="td-year">2022</td>
+          <td class="td-logo"><img src="https://logo.clearbit.com/lightspeedhq.com" alt="Lightspeed" onerror="this.style.display='none'"></td>
+          <td class="td-role">
+            <p class="tl-role">Senior Product Manager</p>
+            <p class="tl-company">Lightspeed Commerce · Toronto</p>
+          </td>
+          <td><p class="tl-impact">Led the launch of Lightspeed B2B — a marketplace platform connecting merchants and brands. Reduced manual data entry time by 25% and improved NPS.</p></td>
+        </tr>
+        <tr>
+          <td class="td-year">2020 – 2022</td>
+          <td class="td-logo"><img src="https://logo.clearbit.com/questrade.com" alt="Questrade" onerror="this.style.display='none'"></td>
+          <td class="td-role">
+            <p class="tl-role">Lead Product Manager</p>
+            <p class="tl-company">Questrade · Toronto</p>
+          </td>
+          <td><p class="tl-impact">First PM hired to launch a 0→1 digital mortgage product — from concept through Beta to national launch, exceeding revenue and unit targets by double digits. Built and led a team of 2 PMs.</p></td>
+        </tr>
+        <tr>
+          <td class="td-year">2018 – 2020</td>
+          <td class="td-logo"><img src="https://logo.clearbit.com/cibc.com" alt="CIBC" onerror="this.style.display='none'"></td>
+          <td class="td-role">
+            <p class="tl-role">Senior Product Manager</p>
+            <p class="tl-company">CIBC · Toronto</p>
+          </td>
+          <td><p class="tl-impact">Led regulatory and compliance product initiatives in retail banking; digitised registered GIC account opening and reduced account open times by 50%.</p></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-eyebrow">Selected Work</p>
+
+    <!-- PROJECT 01 -->
+    <div class="project-block">
+      <div class="project-summary" onclick="toggleProject('p01')">
+        <div class="project-summary-left">
+          <div class="project-meta-row" style="margin-bottom:0; padding-bottom:0; border-bottom:none;">
+            <div>
+              <p class="project-index">01 / 03</p>
+              <h2 class="project-name">Prior Year Doc Upload & Extract</h2>
+              <p class="project-subtitle">Reducing Abandonment Through AI-Powered Onboarding</p>
+              <p class="project-co">Intuit · TurboTax Canada</p>
+            </div>
+            <div class="project-kpi">
+              <span class="kpi-value">+4pts</span>
+              <span class="kpi-label">Onboarding conversion · +5pts NPS</span>
+              <span class="kpi-label" style="margin-top:0.6rem; display:block; color: var(--accent); border: 1px solid #c5d5ff; background: var(--accent-light); padding: 0.25rem 0.5rem;">🏆 Founder's Innovation Award Nominee</span>
+            </div>
+          </div>
+          <p class="project-blurb">Built TurboTax Canada's first AI-powered onboarding experience — using LLMs to extract and pre-fill prior year tax data, increasing early funnel conversion by 4pts and improving NPS by 5 points.</p>
+          <button class="project-expand-btn" id="btn-p01">
+            View details
+            <svg width="6" height="10" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
+          </button>
+        </div>
+        <div class="project-summary-right">
+          <div class="screenshot-showcase" style="margin-top:0;">
+            <div class="screenshot-glow"></div>
+            <div class="screenshot-frame">
+              <div class="screenshot-bar">
+                <span class="screenshot-dot"></span><span class="screenshot-dot"></span><span class="screenshot-dot"></span>
+              </div>
+              <img src="t1-screenshot.png" alt="Prior Year T1 Upload — TurboTax Canada">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-detail" id="p01">
+        <div style="padding-top:1.5rem; border-top:1px solid var(--border); margin-top:0.5rem;">
+          <div class="project-grid">
+            <div class="pgrid-cell pgrid-cell--problem">
+              <p class="pgrid-label">The Problem</p>
+              <p class="pgrid-text"><strong>Business Problem</strong> Intuit was spending acquisition budget to bring new users to TurboTax Canada — and losing 15% of them before they ever experienced the product. With growth targets anchored on converting users who previously filed with accountants, every dollar spent acquiring users who abandoned in onboarding was wasted.<br><br><strong>Customer Problem</strong> The initial assumption was that confusing UI was driving drop-off. I conducted customer research to dig deeper — and it told a different story. New users weren't confused by the UI, they were anxious about starting from scratch. Returning users stayed because their prior year data was already there. New users left because it wasn't.</p>
+            </div>
+            <div class="pgrid-cell">
+              <p class="pgrid-label">Strategy & Approach</p>
+              <ul class="pgrid-list">
+                <li>Reframed the solution space from UI optimisation to data continuity — give new users the same experience returning users had</li>
+                <li>Let users upload last year's tax return; used LLMs to pre-fill ~90% of their profile data from it</li>
+                <li>Chose the richer T1 tax return over simpler alternate documents — validated through user research that data richness outweighed accessibility for the switcher segment</li>
+              </ul>
+            </div>
+            <div class="pgrid-cell">
+              <p class="pgrid-label">Technical Details</p>
+              <ul class="pgrid-list">
+                <li>Two-stage LLM pipeline: first model classifies the document to confirm it's the correct document; second LLM extracts the fields and maps them to TurboTax's data model</li>
+                <li>First AI-powered experience in TurboTax Canada's history</li>
+                <li>Added real-time synchronous extraction and a post-extraction summary screen — both contributed back as reusable platform assets</li>
+                <li>Designed the data layer so imported fields dynamically suppress redundant downstream questions — foundation for a fully AI-driven onboarding experience</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 02 -->
+    <div class="project-block">
+      <div class="project-summary" onclick="toggleProject('p02')">
+        <div class="project-summary-left">
+          <div class="project-meta-row" style="margin-bottom:0; padding-bottom:0; border-bottom:none;">
+            <div>
+              <p class="project-index">02 / 03</p>
+              <h2 class="project-name">AI-Powered Expense Extraction for Self-Employed Filers</h2>
+              <p class="project-co">Intuit · TurboTax Canada</p>
+            </div>
+            <div class="project-kpi">
+              <span class="kpi-value">+20%</span>
+              <span class="kpi-label">Conversion YoY · -15% time to complete</span>
+              <span class="kpi-label" style="margin-top:0.6rem; display:block; color: var(--accent); border: 1px solid #c5d5ff; background: var(--accent-light); padding: 0.25rem 0.5rem;">Infrastructure now powering next-gen SE & Biz Tax products</span>
+            </div>
+          </div>
+          <p class="project-blurb">Shipped TurboTax Canada's first LLM-based expense extraction and auto-categorization experience for self-employed filers — increasing conversion by 20% YoY while reducing time to complete by 15%.</p>
+          <button class="project-expand-btn" id="btn-p02">
+            View details
+            <svg width="6" height="10" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
+          </button>
+        </div>
+        <div class="project-summary-right">
+          <div class="screenshot-showcase" style="margin-top:0;">
+            <div class="screenshot-glow"></div>
+            <div class="screenshot-frame screenshot-empty">
+              <div class="screenshot-bar">
+                <span class="screenshot-dot"></span><span class="screenshot-dot"></span><span class="screenshot-dot"></span>
+              </div>
+              <div class="screenshot-placeholder">
+                <span class="screenshot-plus">+</span>
+                <span class="screenshot-hint">Drop screenshot here</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-detail" id="p02">
+        <div style="padding-top:1.5rem; border-top:1px solid var(--border); margin-top:0.5rem;">
+          <div class="project-grid">
+            <div class="pgrid-cell pgrid-cell--problem">
+              <p class="pgrid-label">The Problem</p>
+              <p class="pgrid-text"><strong>Business Problem</strong> Self-employed users represent TurboTax Canada's highest-revenue segment — but the complexity of claiming business expenses, where a wrong category can trigger a government audit or cost them deductions, meant most defaulted to accountants rather than risk getting it wrong in DIY software. Winning this segment was critical to long-term revenue growth.<br><br><strong>Customer Problem</strong> Research confirmed the root cause: the expense section required significant manual data entry, and selecting the correct tax category was genuinely difficult — users didn't know which category applied, and the consequence of getting it wrong felt too high. That combination of effort and anxiety was driving abandonment and keeping accountant-reliant filers from switching to DIY altogether.</p>
+            </div>
+            <div class="pgrid-cell">
+              <p class="pgrid-label">Strategy & Approach</p>
+              <ul class="pgrid-list">
+                <li>Structured delivery in two independent phases: LLM-powered spreadsheet upload first to validate extraction accuracy, then LLM auto-categorization to eliminate manual expense mapping</li>
+                <li>Championed reusing QuickBooks' existing AI categorization engine over building from scratch</li>
+                <li>Launched each phase as an independent A/B experiment — every scaling decision grounded in data</li>
+                <li>Used research sessions as a deliberate pre-alignment tool — got the entire cross-functional org to witness the customer pain before the investment conversation began</li>
+              </ul>
+            </div>
+            <div class="pgrid-cell">
+              <p class="pgrid-label">Technical Details</p>
+              <ul class="pgrid-list">
+                <li>Built a golden dataset with tax experts; established an automated evaluation pipeline for ongoing accuracy monitoring post-launch</li>
+                <li>Used multiple LLMs to critique and iteratively improve the auto-categorization prompt — lifted accuracy before a line of production code was written</li>
+                <li>Championed an open-source model over a proprietary internal alternative — evaluated across cost, accuracy, latency, and scalability</li>
+                <li>Engaged responsible AI framework proactively — accuracy, explainability, and data handling built into the product from the start, not bolted on after</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 03 -->
+    <div class="project-block">
+      <div class="project-summary" onclick="toggleProject('p03')">
+        <div class="project-summary-left">
+          <div class="project-meta-row" style="margin-bottom:0; padding-bottom:0; border-bottom:none;">
+            <div>
+              <p class="project-index">03 / 03</p>
+              <h2 class="project-name">ML-Powered Upsell Personalisation & New Service Design</h2>
+              <p class="project-co">Intuit · TurboTax Canada</p>
+            </div>
+            <div class="project-kpi">
+              <span class="kpi-value">+50%</span>
+              <span class="kpi-label">+50% conversion · showed 33% fewer upsell prompts</span>
+            </div>
+          </div>
+          <p class="project-blurb">Designed a net-new expert service tier and built an ML model to personalise upsell delivery — showing 33% fewer upsell prompts to users — and still increasing conversions by ~50% and improving NPS.</p>
+          <button class="project-expand-btn" id="btn-p03">
+            View details
+            <svg width="6" height="10" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
+          </button>
+        </div>
+        <div class="project-summary-right">
+          <div class="screenshot-showcase" style="margin-top:0;">
+            <div class="screenshot-glow"></div>
+            <div class="screenshot-frame">
+              <div class="screenshot-bar">
+                <span class="screenshot-dot"></span><span class="screenshot-dot"></span><span class="screenshot-dot"></span>
+              </div>
+              <img src="upsell-screenshot.png" alt="Expert Assist upsell screen — TurboTax Canada">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-detail" id="p03">
+        <div style="padding-top:1.5rem; border-top:1px solid var(--border); margin-top:0.5rem;">
+          <div class="project-grid">
+            <div class="pgrid-cell pgrid-cell--problem">
+              <p class="pgrid-label">The Problem</p>
+              <p class="pgrid-text"><strong>Business Problem</strong> Expert upsells were a major revenue stream for TurboTax Canada — but conversion was declining and the one-size-fits-all approach was generating customer complaints. Every user saw the same upsell triggers regardless of their tax complexity or confidence level.<br><br><strong>Customer Problem</strong> Research, deep quantitative analysis across user tax profiles, and industry research revealed the real picture: high-confidence users were being interrupted by upsells they didn't need; users who genuinely needed help weren't being reached at the right moment; and the rise of AI chat tools had shifted behaviour — users were getting tax questions answered by AI, making unlimited expert access feel overpriced for what they now needed. The real insight: users still valued expert validation, they just didn't need unlimited access to it. The market had moved and the product hadn't.</p>
+            </div>
+            <div class="pgrid-cell">
+              <p class="pgrid-label">Strategy & Approach</p>
+              <ul class="pgrid-list">
+                <li>Identified a market gap created by AI and designed a net-new service: a single expert review call at a lower price point — expert confidence without unlimited access</li>
+                <li>The critical constraint was cannibalisation — users likely to buy the full service should never see the lower-priced option, or revenue would drop</li>
+                <li>Built an ML model specifically to solve this: score each user's likelihood to need full vs. light-touch expert help, and suppress the wrong offer accordingly</li>
+                <li>Optimised trigger timing — surfacing the right offer at the right moment, whether at review or when a balance-owing threshold was crossed</li>
+              </ul>
+            </div>
+            <div class="pgrid-cell">
+              <p class="pgrid-label">Technical Details</p>
+              <ul class="pgrid-list">
+                <li>ML model scored each return across three dimensions: likelihood to stay self-serve, likelihood to need full expert assistance, likelihood to convert on the lighter-touch service</li>
+                <li>Trained on two years of prior tax return data with 50+ attributes — tax complexity, refund amount, filing experience, employment type, marital status, number of dependants</li>
+                <li>Showed 33% fewer upsell prompts to users — and still increased conversion by ~50% — proving that precision targeting outperforms volume</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-layout">
+      <div>
+        <h2 class="contact-title">Let's<br><em>talk</em></h2>
+        <p class="contact-body">Open to senior IC and leadership roles at companies building something genuinely hard. Best reached by email or LinkedIn.</p>
+      </div>
+      <div class="contact-list">
+        <a href="mailto:neema.kashiripour@gmail.com" class="contact-item">
+          <span class="contact-item-label">Email</span>
+          <span class="contact-item-value">neema.kashiripour@gmail.com</span>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://www.linkedin.com/in/neema-kashiripour-9784075a/" target="_blank" class="contact-item">
+          <span class="contact-item-label">LinkedIn</span>
+          <span class="contact-item-value">/in/neema-kashiripour</span>
+          <span class="contact-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer-line">
+      <span class="footer-copy">© 2025 Neema Kashiripour. All rights reserved.</span>
+      <span class="footer-copy">Hosted on GitHub Pages</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll(
+    '.timeline-table tr, .project-block'
+  ).forEach(el => observer.observe(el));
+
+  function toggleProject(id) {
+    const detail = document.getElementById(id);
+    const btn = document.getElementById('btn-' + id);
+    const isOpen = detail.classList.contains('open');
+    detail.classList.toggle('open');
+    btn.classList.toggle('open');
+    btn.querySelector('span') && (btn.querySelector('span').textContent = isOpen ? 'View details' : 'Hide details');
+    // Update text node
+    btn.childNodes.forEach(node => {
+      if (node.nodeType === 3) node.textContent = isOpen ? 'View details ' : 'Hide details ';
+    });
+  }
+</script>
+</body>
+</html>
