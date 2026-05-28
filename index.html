@@ -455,6 +455,67 @@
     text-transform: uppercase;
   }
 
+  /* REFERENCES */
+  #references { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .ref-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 2rem;
+  }
+  .ref-mark {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    color: var(--accent);
+    line-height: 1;
+    opacity: 0.25;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .ref-quote {
+    font-family: var(--serif);
+    font-size: 0.88rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .ref-divider {
+    width: 30px;
+    height: 1px;
+    background: var(--border-dark);
+    margin-bottom: 1rem;
+  }
+  .ref-name {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 0.92rem;
+    margin-bottom: 0.2rem;
+  }
+  .ref-title {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .ref-rel {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 0.2rem 0.6rem;
+    text-decoration: none;
+  }
+  .ref-rel:hover { background: #d6e4ff; }
+
   /* CONTACT */
   #contact { border-top: 1px solid var(--border); padding-bottom: 4rem; }
   .contact-layout {
@@ -604,6 +665,7 @@
   <ul class="nav-links">
     <li><a href="#projects">Work</a></li>
     <li><a href="#timeline">Experience</a></li>
+    <li><a href="#references">Recommendations</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -871,6 +933,43 @@
   </div>
 </section>
 
+
+<!-- REFERENCES -->
+<section id="references">
+  <div class="container">
+    <p class="section-eyebrow">Recommendations</p>
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <span class="ref-mark">"</span>
+        <p class="ref-quote">Neema has a great ability to lead product strategy and understand and collaborate with engineering on deeply technical AI work. He doesn't just define requirements, he understands the mechanics of building reliable LLM-based systems and uses that understanding to shape better product decisions. Neema consistently brings a hands-on, data-driven approach — comfortable prototyping ideas, using experiments to reduce ambiguity, working with customer insights and partnering closely with engineering and data science on evals, prompt quality, model behaviour and system reliability. His decisions are always grounded in both customer value and technical reality. He also brings real strength in cross-functional alignment, connecting teams across product, design, engineering and data science around a clear shared direction.</p>
+        <div class="ref-divider"></div>
+        <p class="ref-name">Rohan Usturge</p>
+        <p class="ref-title">Senior Staff Software Engineer · Intuit</p>
+        <a href="https://www.linkedin.com/in/rohan-usturge/" target="_blank" class="ref-rel">Lead Engineer · AI Expense Extraction ↗</a>
+      </div>
+
+      <div class="ref-card">
+        <span class="ref-mark">"</span>
+        <p class="ref-quote">Neema has a strategic business mind, a collaborative spirit, and is an expert in building teams and relationships. Being a product manager often means you know the most about the product and the market — Neema is always patient and kind while sharing his expertise. Any org would be lucky to have Neema on their team.</p>
+        <div class="ref-divider"></div>
+        <p class="ref-name">Amy Ly</p>
+        <p class="ref-title">Senior Principal Product Content Strategist · Autodesk</p>
+        <a href="https://www.linkedin.com/in/acly/" target="_blank" class="ref-rel">Cross-functional Peer · Questrade ↗</a>
+      </div>
+
+      <div class="ref-card">
+        <span class="ref-mark">"</span>
+        <p class="ref-quote">Neema is a highly skilled and strategic thinker who consistently demonstrated a deep understanding of market dynamics and user needs. He possesses an innate ability to translate complex requirements into clear and actionable product strategies. Throughout our projects, Neema displayed exemplary leadership qualities — effectively communicating the product vision, ensuring all stakeholders were aligned and informed. His exceptional analytical skills and data-driven approach allowed us to make informed decisions and pivot when necessary, resulting in optimized product outcomes and enhanced user experiences.</p>
+        <div class="ref-divider"></div>
+        <p class="ref-name">Abhishek Rawat</p>
+        <p class="ref-title">Staff Software Engineer · Lightspeed HQ</p>
+        <a href="https://www.linkedin.com/in/abhishekrawat1/" target="_blank" class="ref-rel">Engineering Collaborator · Lightspeed ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- CONTACT -->
 <section id="contact">
