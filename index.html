@@ -602,8 +602,8 @@
 <nav id="nav">
   <span class="nav-logo">Neema Kashiripour</span>
   <ul class="nav-links">
-    <li><a href="#timeline">Timeline</a></li>
     <li><a href="#projects">Work</a></li>
+    <li><a href="#timeline">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -623,62 +623,6 @@
   </div>
 </section>
 
-<!-- TIMELINE -->
-<section id="timeline">
-  <div class="container">
-    <p class="section-eyebrow">Career Timeline</p>
-    <table class="timeline-table">
-      <tbody>
-        <tr>
-          <td class="td-year">2023 – Present</td>
-          <td class="td-logo"><img src="https://logo.clearbit.com/intuit.com" alt="Intuit" onerror="this.style.display='none'"></td>
-          <td class="td-role">
-            <p class="tl-role">Staff Product Manager</p>
-            <p class="tl-company">Intuit · Toronto</p>
-          </td>
-          <td><p class="tl-impact">Leading strategy, roadmap and execution for TurboTax Online Canada (~3M users). Shipped the first AI-powered experience in TurboTax Canada; contributed to 10% YoY revenue growth.</p></td>
-        </tr>
-        <tr>
-          <td class="td-year">2022 – 2023</td>
-          <td class="td-logo"><img src="https://logo.clearbit.com/questrade.com" alt="Questrade" onerror="this.style.display='none'"></td>
-          <td class="td-role">
-            <p class="tl-role">Lead Product Manager</p>
-            <p class="tl-company">Questrade · Toronto</p>
-          </td>
-          <td><p class="tl-impact">Scaled acquisition by launching integrations with digital real estate brokerages and rate aggregators; cut cost per lead by double digits and reduced application drop-off by 35%.</p></td>
-        </tr>
-        <tr>
-          <td class="td-year">2022</td>
-          <td class="td-logo"><img src="https://logo.clearbit.com/lightspeedhq.com" alt="Lightspeed" onerror="this.style.display='none'"></td>
-          <td class="td-role">
-            <p class="tl-role">Senior Product Manager</p>
-            <p class="tl-company">Lightspeed Commerce · Toronto</p>
-          </td>
-          <td><p class="tl-impact">Led the launch of Lightspeed B2B — a marketplace platform connecting merchants and brands. Reduced manual data entry time by 25% and improved NPS.</p></td>
-        </tr>
-        <tr>
-          <td class="td-year">2020 – 2022</td>
-          <td class="td-logo"><img src="https://logo.clearbit.com/questrade.com" alt="Questrade" onerror="this.style.display='none'"></td>
-          <td class="td-role">
-            <p class="tl-role">Lead Product Manager</p>
-            <p class="tl-company">Questrade · Toronto</p>
-          </td>
-          <td><p class="tl-impact">First PM hired to launch a 0→1 digital mortgage product — from concept through Beta to national launch, exceeding revenue and unit targets by double digits. Built and led a team of 2 PMs.</p></td>
-        </tr>
-        <tr>
-          <td class="td-year">2018 – 2020</td>
-          <td class="td-logo"><img src="https://logo.clearbit.com/cibc.com" alt="CIBC" onerror="this.style.display='none'"></td>
-          <td class="td-role">
-            <p class="tl-role">Senior Product Manager</p>
-            <p class="tl-company">CIBC · Toronto</p>
-          </td>
-          <td><p class="tl-impact">Led regulatory and compliance product initiatives in retail banking; digitised registered GIC account opening and reduced account open times by 50%.</p></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
@@ -694,7 +638,7 @@
             <p class="project-subtitle">Reducing Abandonment Through AI-Powered Onboarding</p>
             <p class="project-co">Intuit · TurboTax Canada</p>
             <span class="kpi-label" style="margin-top:0.75rem; display:inline-block; color: var(--accent); border: 1px solid #c5d5ff; background: var(--accent-light); padding: 0.25rem 0.75rem;">🏆 Founder's Innovation Award Nominee</span>
-            <p class="project-impact" style="margin-top:0.5rem;">+4pts early funnel conversion · +5pts NPS</p>
+            <p class="project-impact" style="margin-top:0.5rem;">+4pts early funnel conversion · +5pts NPS · 90% of return pre-filled</p>
           </div>
           <p class="project-blurb">Built TurboTax Canada's first AI-powered onboarding experience — using LLMs to extract and pre-fill 90% of a user's return from their prior year tax data, ensuring no credits or deductions are missed for maximum refund accuracy.</p>
           <button class="project-expand-btn" id="btn-p01">
@@ -728,6 +672,7 @@
                 <li>Reframed the solution space from UI optimisation to data continuity — give new users the same experience returning users had</li>
                 <li>Let users upload last year's tax return; used LLMs to pre-fill ~90% of their profile data from it</li>
                 <li>Chose the richer T1 tax return over simpler alternate documents — validated through user research that data richness outweighed accessibility for the switcher segment</li>
+                <li>Partnered with marketing to launch a targeted switching campaign, using the feature as the centrepiece of acquisition efforts aimed at accountant-reliant filers</li>
               </ul>
             </div>
             <div class="pgrid-cell">
@@ -735,7 +680,8 @@
               <ul class="pgrid-list">
                 <li>Two-stage LLM pipeline: first model classifies the document to confirm it's the correct document; second LLM extracts the fields and maps them to TurboTax's data model</li>
                 <li>First AI-powered experience in TurboTax Canada's history</li>
-                <li>Added real-time synchronous extraction and a post-extraction summary screen — both contributed back as reusable platform assets</li>
+                <li>Reduced latency by working with engineering to design a real-time synchronous extraction flow — contributed back as a reusable platform asset</li>
+                <li>Built an automated feedback loop to measure precision and recall of the extraction model post-launch, enabling continuous accuracy improvement without manual review overhead</li>
                 <li>Designed the data layer so imported fields dynamically suppress redundant downstream questions — foundation for a fully AI-driven onboarding experience</li>
               </ul>
             </div>
@@ -747,14 +693,14 @@
     <!-- PROJECT 02 -->
     <div class="project-block">
       <div class="project-summary" onclick="toggleProject('p02')">
+        <div class="project-summary-left">
           <div style="margin-bottom:0;">
             <p class="project-index">02 / 03</p>
             <h2 class="project-name">AI-Powered Expense Extraction for Self-Employed Filers</h2>
             <p class="project-co">Intuit · TurboTax Canada</p>
-            <span class="kpi-label" style="margin-top:0.75rem; display:inline-block; color: var(--accent); border: 1px solid #c5d5ff; background: var(--accent-light); padding: 0.25rem 0.75rem;">Infrastructure now powering next-gen SE &amp; Biz Tax products</span>
-            <p class="project-impact" style="margin-top:0.5rem;">+20% conversion YoY · -15% time to complete</p>
+            <p class="project-impact" style="margin-top:0.5rem;">+20% conversion YoY · -15% time to complete · +$500 average refund amount</p>
           </div>
-          <p class="project-blurb">Eliminated the manual effort of expense entry for self-employed filers — using LLMs to extract expenses from spreadsheets and auto-categorize them to the correct tax categories, reducing errors and saving hours of work at tax time.</p>
+          <p class="project-blurb">Self-employed filers spend hours manually entering and categorizing business expenses — often unsure which tax category applies, risking missed deductions and a smaller refund, and leading many to abandon DIY software altogether in favour of accountants. This feature extracts expenses directly from messy, unstructured spreadsheets and auto-categorizes them to the correct tax categories using LLMs — eliminating manual effort, reducing errors, and maximizing the user's refund.</p>
           <button class="project-expand-btn" id="btn-p02">
             View details
             <svg width="6" height="10" viewBox="0 0 6 10" fill="none"><path d="M1 1l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
@@ -785,19 +731,19 @@
             <div class="pgrid-cell">
               <p class="pgrid-label">Strategy & Approach</p>
               <ul class="pgrid-list">
-                <li>Structured delivery in two independent phases: LLM-powered spreadsheet upload first to validate extraction accuracy, then LLM auto-categorization to eliminate manual expense mapping</li>
-                <li>Championed reusing QuickBooks' existing AI categorization engine over building from scratch</li>
-                <li>Launched each phase as an independent A/B experiment — every scaling decision grounded in data</li>
                 <li>Used research sessions as a deliberate pre-alignment tool — got the entire cross-functional org to witness the customer pain before the investment conversation began</li>
+                <li>Structured delivery in two independent phases: LLM-powered spreadsheet upload first to validate adoption and collect real customer expense samples — which directly informed model training for phase 2 — then LLM auto-categorization built on that foundation to eliminate manual expense mapping entirely</li>
+                <li>Launched each phase as an independent A/B experiment — results from phase 1 validated the business case before committing engineering resources to the more complex auto-categorization build</li>
+                <li>Designed the capability as a scalable platform asset — the extraction and categorization infrastructure was built to extend beyond personal tax to business tax filing</li>
+                <li>Positioned this as phase one of a multi-year strategy toward year-round expense tracking — laying the foundation for an always-on financial management experience for self-employed users</li>
               </ul>
             </div>
             <div class="pgrid-cell">
               <p class="pgrid-label">Technical Details</p>
               <ul class="pgrid-list">
-                <li>Built a golden dataset with tax experts; established an automated evaluation pipeline for ongoing accuracy monitoring post-launch</li>
-                <li>Used multiple LLMs to critique and iteratively improve the auto-categorization prompt — lifted accuracy before a line of production code was written</li>
+                <li>Built the golden dataset for auto-categorization using real customer expense samples collected in phase 1, supplemented with synthetic data to cover edge cases — used for pre-launch evals measuring precision, recall, and category accuracy, and to iteratively fine-tune the categorization prompt before a line of production code was written</li>
                 <li>Championed an open-source model over a proprietary internal alternative — evaluated across cost, accuracy, latency, and scalability</li>
-                <li>Engaged responsible AI framework proactively — accuracy, explainability, and data handling built into the product from the start, not bolted on after</li>
+                <li>Set an 80% confidence threshold across all 22 CRA tax categories — predictions below threshold were surfaced as uncategorized rather than shown to users, protecting refund accuracy. Achieved 80%+ on every category pre-launch using the golden dataset, and accuracy held on real production data post-launch, validated through an automated feedback loop.</li>
               </ul>
             </div>
           </div>
@@ -868,13 +814,71 @@
 
 
 
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="container">
+    <p class="section-eyebrow">Experience</p>
+    <table class="timeline-table">
+      <tbody>
+        <tr>
+          <td class="td-year">2023 – Present</td>
+          <td class="td-logo"><img src="https://logo.clearbit.com/intuit.com" alt="Intuit" onerror="this.style.display='none'"></td>
+          <td class="td-role">
+            <p class="tl-role">Staff Product Manager</p>
+            <p class="tl-company">Intuit · Toronto</p>
+          </td>
+          <td><p class="tl-impact">Leading strategy, roadmap and execution for TurboTax Online Canada (~3M users). Shipped the first AI-powered experience in TurboTax Canada; contributed to 10% YoY revenue growth.</p></td>
+        </tr>
+        <tr>
+          <td class="td-year">2022 – 2023</td>
+          <td class="td-logo"><img src="https://logo.clearbit.com/questrade.com" alt="Questrade" onerror="this.style.display='none'"></td>
+          <td class="td-role">
+            <p class="tl-role">Lead Product Manager</p>
+            <p class="tl-company">Questrade · Toronto</p>
+          </td>
+          <td><p class="tl-impact">Scaled acquisition by launching integrations with digital real estate brokerages and rate aggregators; cut cost per lead by double digits and reduced application drop-off by 35%.</p></td>
+        </tr>
+        <tr>
+          <td class="td-year">2022</td>
+          <td class="td-logo"><img src="https://logo.clearbit.com/lightspeedhq.com" alt="Lightspeed" onerror="this.style.display='none'"></td>
+          <td class="td-role">
+            <p class="tl-role">Senior Product Manager</p>
+            <p class="tl-company">Lightspeed Commerce · Toronto</p>
+          </td>
+          <td><p class="tl-impact">Led the launch of Lightspeed B2B — a marketplace platform connecting merchants and brands. Reduced manual data entry time by 25% and improved NPS.</p></td>
+        </tr>
+        <tr>
+          <td class="td-year">2020 – 2022</td>
+          <td class="td-logo"><img src="https://logo.clearbit.com/questrade.com" alt="Questrade" onerror="this.style.display='none'"></td>
+          <td class="td-role">
+            <p class="tl-role">Lead Product Manager</p>
+            <p class="tl-company">Questrade · Toronto</p>
+          </td>
+          <td><p class="tl-impact">First PM hired to launch a 0→1 digital mortgage product — from concept through Beta to national launch, exceeding revenue and unit targets by double digits. Built and led a team of 2 PMs.</p></td>
+        </tr>
+        <tr>
+          <td class="td-year">2018 – 2020</td>
+          <td class="td-logo"><img src="https://logo.clearbit.com/cibc.com" alt="CIBC" onerror="this.style.display='none'"></td>
+          <td class="td-role">
+            <p class="tl-role">Senior Product Manager</p>
+            <p class="tl-company">CIBC · Toronto</p>
+          </td>
+          <td><p class="tl-impact">Led regulatory and compliance product initiatives in retail banking; digitised registered GIC account opening and reduced account open times by 50%.</p></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="contact-layout">
       <div>
         <h2 class="contact-title">Let's<br><em>talk</em></h2>
-        <p class="contact-body">Open to senior IC and leadership roles at companies building something genuinely hard. Best reached by email or LinkedIn.</p>
+        <p class="contact-body">Feel free to reach out via email or LinkedIn.</p>
       </div>
       <div class="contact-list">
         <a href="mailto:neema.kashiripour@gmail.com" class="contact-item">
